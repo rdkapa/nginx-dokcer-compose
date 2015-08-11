@@ -1,0 +1,15 @@
+# main front nginx base container
+# dont forget to change the path on your (/shared/...)
+
+web:
+    image: nginx
+    container_name: nginx_main
+    volumes:
+        - /shared/nginx/config/:/etc/nginx/conf.d/
+        - /shared/nginx/static/:/usr/share/nginx/html/
+        - /shared/nginx/ssl/:/etc/nginx/ssl/
+    ports:
+        - "80:80"
+        - "443:443"
+    external_links:
+        # paste here your linked container name
